@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.docx-wrapper{
+  padding: 0 !important;
+}
