@@ -11,6 +11,7 @@ import EditJobView from "@/views/EditJobView.vue";
 import FromDocToHTML from "@/views/FromDocToHTML.vue";
 import SplitView from "@/views/SplitView.vue";
 import SplitView2 from "@/views/SplitView2.vue";
+import ReplaceWord from "@/views/ReplaceWord.vue";
 
 
 const router = createRouter({
@@ -55,6 +56,11 @@ const router = createRouter({
             path: '/splitview2',
             name: 'split-view2',
             component: SplitView2
+        },
+        {
+            path: '/replace-word',
+            name: 'replace-word',
+            component: ReplaceWord
         },
         {
             path: '/:catchAll(.*)',

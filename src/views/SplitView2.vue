@@ -1,44 +1,44 @@
-<script>
+<script setup>
 import {renderAsync} from "docx-preview"; // docx-preview kutubxonasini import qilish
 import {ref, onMounted} from "vue";
 
-export default {
-  setup() {
-    const form = ref({
-      first_name: "",
-      last_name: "",
-      middle_name: "",
-    });
 
-    const renderDocx = async () => {
-      try {
-        const container = document.querySelector(".docx-container");
 
-        // .docx faylni yuklash
-        const response = await fetch(new URL("@/assets/word_files/sample2.docx", import.meta.url));
-        const blob = await response.blob();
+const form = ref({
+  first_name: "",
+  last_name: "",
+  middle_name: "",
+});
 
-        // Hujjatni render qilish
-        await renderAsync(blob, container, null);
-      } catch (error) {
-        console.error("Faylni render qilishda xatolik yuz berdi:", error);
-      }
-    };
 
-    const submitForm = () => {
-      alert(`Ism: ${form.value.first_name}, Email: ${form.value.email}, Xabar: ${form.value.message}`);
-    };
+const renderDocx = async () => {
+  try {
+    const container = document.querySelector(".docx-container");
 
-    onMounted(() => {
-      renderDocx(); // Komponent yuklanishi bilan render qilishni boshlash
-    });
+    // .docx faylni yuklash
+    const response = await fetch(new URL("@/assets/word_files/sample2.docx", import.meta.url));
+    const blob = await response.blob();
 
-    return {
-      form,
-      submitForm,
-    };
-  },
+
+    // Hujjatni render qilish
+    await renderAsync(blob, container, null);
+  } catch (error) {
+    console.error("Faylni render qilishda xatolik yuz berdi:", error);
+  }
 };
+
+const submitForm = () => {
+  alert(`Ism: ${form.value.first_name}, Email: ${form.value.email}, Xabar: ${form.value.message}`);
+};
+
+onMounted(() => {
+  renderDocx(); // Komponent yuklanishi bilan render qilishni boshlash
+});
+
+const changeDocument = () => {
+
+};
+
 </script>
 
 <template>
@@ -50,22 +50,27 @@ export default {
         <form @submit.prevent="submitForm">
           <div>
             <label for="name">Ism:</label>
-            <input id="name" v-model="form.first_name" type="text" placeholder="Ismingizni kiriting"/>
+            <input id="name" v-model="form.first_name" @change="changeDocument()" type="text"
+                   placeholder="Ismingizni kiriting"/>
           </div>
           <div>
             <label for="email">Email:</label>
-            <input id="email" v-model="form.email" type="text" placeholder="Emailingizni kiriting"/>
+            <input id="email" v-model="form.email" @change="changeDocument()" type="text"
+                   placeholder="Emailingizni kiriting"/>
           </div>
           <div>
             <label for="message">Xabar:</label>
             <textarea
                 id="message"
                 v-model="form.message"
+                @change="changeDocument()"
                 placeholder="Xabar yozing"
                 rows="5"
             ></textarea>
           </div>
-          <button type="submit">Yuborish</button>
+          <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600" type="submit">
+            Yuborish
+          </button>
         </form>
       </div>
 
@@ -88,7 +93,7 @@ export default {
 .docx-container {
   width: 100%; /* A4 format kengligi */
   background-color: #fff;
-  padding:60px;
+  padding: 60px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
   overflow: auto;
@@ -164,5 +169,6 @@ export default {
     padding: 0;
   }
 }
+
 
 </style>
