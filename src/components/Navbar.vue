@@ -30,6 +30,11 @@ const isActiveLink = (routePath) => {
                   :class="[isActiveLink('/add-jobs') ? 'bg-green-900 text-white, text-white':'text-white', 'hover:bg-green-900', 'hover:text-white', 'rounded-md' ,'px-3' ,'py-2']"
               >Word
               </RouterLink
+              ><RouterLink
+                  to="/replace-word"
+                  :class="[isActiveLink('/add-jobs') ? 'bg-green-900 text-white, text-white':'text-white', 'hover:bg-green-900', 'hover:text-white', 'rounded-md' ,'px-3' ,'py-2']"
+              >Word 2
+              </RouterLink
               >
             </div>
           </div>
