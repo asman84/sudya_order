@@ -12,6 +12,7 @@ import FromDocToHTML from "@/views/FromDocToHTML.vue";
 import SplitView from "@/views/SplitView.vue";
 import SplitView2 from "@/views/SplitView2.vue";
 import ReplaceWord from "@/views/ReplaceWord.vue";
+import Word3 from "@/views/Word3.vue";
 
 
 const router = createRouter({
@@ -61,6 +62,11 @@ const router = createRouter({
             path: '/replace-word',
             name: 'replace-word',
             component: ReplaceWord
+        },
+        {
+            path: '/word3',
+            name: 'word3',
+            component: Word3,
         },
         {
             path: '/:catchAll(.*)',

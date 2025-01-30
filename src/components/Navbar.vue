@@ -36,6 +36,9 @@ const isActiveLink = (routePath) => {
               >Word 2
               </RouterLink
               >
+              <RouterLink to="/word3"
+                :class="[isActiveLink('/word3') ? 'bg-green-900 text-white, text-white':'text-white', 'hover:bg-green-900', 'hover:text-white', 'rounded-md' ,'px-3' ,'py-2']"
+              >Word 3</RouterLink>
             </div>
           </div>
         </div>
