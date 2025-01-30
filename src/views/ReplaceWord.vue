@@ -4,7 +4,7 @@ import {renderAsync} from "docx-preview"; // .docx faylni render qilish uchun
 
 // ✅ Foydalanuvchi kiritadigan qiymat
 const form = ref({
-  firstname: "",
+  firstname: "kukuk",
 });
 
 const container = ref(null); // `.docx` faylni chiqarish uchun HTML konteyner
@@ -24,6 +24,14 @@ const loadDocx = async () => {
     console.error("❌ DOCX yuklashda xatolik:", error);
   }
 };
+
+let debounceTimer = ref(null);
+watch(() => form.value.firstname, () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(async () => {
+    await loadDocx();
+  }, 500); // Adjust debounce time as needed
+});
 
 // ✅ **Matnni `.docx` ichida dinamik o‘zgartirish**
 const updateDocxContent = () => {
