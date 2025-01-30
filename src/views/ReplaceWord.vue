@@ -4,7 +4,7 @@ import {renderAsync} from "docx-preview"; // .docx faylni render qilish uchun
 
 // ✅ Foydalanuvchi kiritadigan qiymat
 const form = ref({
-  firstname: "kukuk",
+  firstname: "",
 });
 
 const container = ref(null); // `.docx` faylni chiqarish uchun HTML konteyner
